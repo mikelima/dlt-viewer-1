@@ -222,6 +222,7 @@ void SettingsDialog::writeDlg()
 
     /* table */
     ui->spinBoxFontSize->setValue(fontSize);
+    ui->fontComboBox->setCurrentFont(fontName);
 
     /* Time settings */
     ui->groupBoxAutomaticTimeSettings->setChecked(automaticTimeSettings?Qt::Checked:Qt::Unchecked);
@@ -377,6 +378,7 @@ void SettingsDialog::readDlg()
 
     /* table */
     fontSize = ui->spinBoxFontSize->value();
+    fontName = ui->fontComboBox->currentFont().family();
 
     /* Time settings */
     automaticTimeSettings = ( ui->groupBoxAutomaticTimeSettings->isChecked() == true ? 1:0);
@@ -459,6 +461,7 @@ void SettingsDialog::writeSettings(QMainWindow *mainwindow)
 
     /* table */
     settings->setValue("startup/fontSize",fontSize);
+    settings->setValue("startup/fontName",fontName);
     settings->setValue("startup/automaticTimeSettings",automaticTimeSettings);
     settings->setValue("startup/automaticTimezoneFromDlt",automaticTimezoneFromDlt);
     settings->setValue("startup/utcOffset",utcOffset);
@@ -531,6 +534,8 @@ void SettingsDialog::readSettings()
 
     /* table */
     fontSize = settings->value("startup/fontSize",8).toInt();
+    fontName = settings->value("startup/fontName", "Monospace").toString();
+    ui->fontComboBox->setCurrentFont(fontName);
     automaticTimeSettings = settings->value("startup/automaticTimeSettings",1).toInt();
     automaticTimezoneFromDlt = settings->value("startup/automaticTimezoneFromDlt",1).toInt();
     utcOffset = settings->value("startup/utcOffset",QVariant((qlonglong)timezone*-1)).toLongLong();

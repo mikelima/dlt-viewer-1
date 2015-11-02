@@ -96,6 +96,7 @@ public:
     int dst;
 
     QString workingDirectory;
+    QString fontName;
 
     void assertSettingsVersion();
 

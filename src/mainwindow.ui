@@ -41,7 +41,7 @@
      <widget class="DltTableView" name="tableView">
       <property name="font">
        <font>
-        <family>Courier 10 Pitch</family>
+        <family>Monospace</family>
         <pointsize>8</pointsize>
        </font>
       </property>

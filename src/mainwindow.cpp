@@ -1580,7 +1580,7 @@ void MainWindow::reloadLogFileDefaultFilter()
 
 void MainWindow::applySettings()
 {
-    QFont tableViewFont = ui->tableView->font();
+    QFont tableViewFont = QFont(settings->fontName);
     tableViewFont.setPointSize(settings->fontSize);
     ui->tableView->setFont(tableViewFont);
     // Rescale the height of a row to choosen font size + 8 pixels
